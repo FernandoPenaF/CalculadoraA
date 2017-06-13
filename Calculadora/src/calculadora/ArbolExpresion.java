@@ -55,10 +55,14 @@ public class ArbolExpresion {
         return cad.equals("+") || cad.equals("-") || cad.equals("*") || cad.equals("/");
     }
     
+    public float evalua(){
+        return evalua(this.raiz);
+    }
+    
     /*
     Se encarga de evaluar la expresión al recorrer el árbol.
     */
-    public final float evalua(Nodo nodo){
+    private float evalua(Nodo nodo){
         if(nodo == null)
             return 0;
         else{
@@ -73,6 +77,7 @@ public class ArbolExpresion {
             }
         }
     }
+    
     /*
     Realiza la operación dependiendo del operador.
     */

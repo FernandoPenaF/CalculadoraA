@@ -25,10 +25,6 @@ public class Expresion {
         this.balanceado = false;
     }
     
-    public Expresion(String exp){
-        this.setInfijo(exp);
-    }
-    
     /*
     Se lee la expresión infija, si está balanceada se transforma a postfija.
     */
@@ -38,8 +34,10 @@ public class Expresion {
         
         if(this.balanceado)
             this.postfijo = this.aPosfijo();
-        else
+        else{
             this.postfijo = new ArrayList();
+            throw new ArithmeticException("Parentesís no balanceados.");
+        }
     }
     
     public String getInfijo() {

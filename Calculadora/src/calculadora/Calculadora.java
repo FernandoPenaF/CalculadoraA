@@ -1,22 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package calculadora;
 
 /**
  *
- * @author Fernando Peña
+ * @author Peña Flores, Luis Fernando
  */
 public class Calculadora {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Expresion ex = new Expresion("( 1 + 2 ) / 3 - ( 2 - 7 )");
-        ArbolExpresion exA = new ArbolExpresion(ex.getPostfijo());
-        System.out.println(exA.getResultado());
+    private Expresion exp;
+    private ArbolExpresion arbolExp;
+    
+    public Calculadora(){
+        this.exp = new Expresion();
+        this.arbolExp = null;
+    }
+    
+    public float evalua(String expresion){
+        float respuesta = 0;
+        try{
+            this.exp.setInfijo(expresion);
+            this.arbolExp = new ArbolExpresion(this.exp.getPostfijo());
+            respuesta = this.arbolExp.evalua();
+            this.arbolExp = null;
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return respuesta;
     }
 }
