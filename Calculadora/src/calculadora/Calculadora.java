@@ -15,14 +15,12 @@ public class Calculadora {
     
     public float evalua(String expresion){
         float respuesta = 0;
-        try{
-            this.exp.setInfijo(expresion);
-            this.arbolExp = new ArbolExpresion(this.exp.getPostfijo());
-            respuesta = this.arbolExp.evalua();
-            this.arbolExp = null;
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
+        
+        this.exp.setInfijo(expresion);
+        this.arbolExp = new ArbolExpresion(this.exp.getPostfijo());
+        respuesta = this.arbolExp.evalua();
+        this.arbolExp = null;
+
         return respuesta;
     }
 }
